@@ -1,0 +1,76 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.cursor/
+*.swp
+*.swo
+
+# Logs
+*.log
+server.log
+
+# Node modules (if any)
+node_modules/
+
+# Temporary files
+*.tmp
+*.temp
+
+# System files
+.CFUserTextEncoding
+.bash_history
+.zsh_history
+.zsh_sessions/
+.zprofile*
+.zshrc
+.gitconfig
+.npm/
+.nvm/
+.cache/
+.config/
+.local/
+.cups/
+.ssh/
+.ollama/
+.pm2/
+.cursor-tutor/
+.oh-my-zsh/
+.addigy_*
+.wdm/
+.yarnrc
+.swiftpm/
+bun.lock
+package*.json
+yarn.lock
+get-pip.py
+figma_mcp_*.log
+
+# Directories to ignore
+Applications/
+Desktop/
+Downloads/
+Library/
+Movies/
+Music/
+MyFolder/
+Pictures/
+Public/
+Videos/
+Creative*/
+Screen*/
+style-dictionary-project/
+
+# Exclude parent directory references
+../
+../../
+../../../ 
+# Local Netlify folder
+.netlify

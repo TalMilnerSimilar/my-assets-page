@@ -1,0 +1,308 @@
+/* Sidebar Navigation */
+
+.nav-bar {
+    width: 256px;
+    background-color: var(--white);
+    border-right: 1px solid var(--light-gray);
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+    gap: var(--spacing-xl);
+    transition: all var(--transition-medium);
+    position: relative;
+    z-index: 100;
+}
+
+/* Unpinned navbar styles */
+.nav-bar.unpinned {
+    width: 48px;
+    padding: var(--spacing-xl) 0 var(--spacing-md);
+    overflow: hidden;
+}
+
+.nav-bar.unpinned .logo-container {
+    justify-content: center;
+    padding: var(--spacing-sm) 0;
+}
+
+.nav-bar.unpinned .similarweb-logo.full-logo {
+    display: none;
+}
+
+.nav-bar.unpinned .similarweb-logo.icon-only {
+    display: block;
+}
+
+.nav-bar.unpinned .nav-text {
+    display: none;
+}
+
+.nav-bar.unpinned .new-badge,
+.nav-bar.unpinned .beta-badge {
+    display: none;
+}
+
+.nav-bar.unpinned .chevron-icon {
+    display: none;
+}
+
+.nav-bar.unpinned .nav-item {
+    width: 48px;
+    padding: var(--spacing-md);
+    justify-content: center;
+}
+
+.nav-bar.unpinned .nav-content {
+    justify-content: center;
+}
+
+/* Hover state for unpinned navbar */
+.nav-bar.unpinned.hover-show {
+    width: 256px;
+    padding: var(--spacing-xl) var(--spacing-lg) var(--spacing-md);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar.unpinned.hover-show .logo-container {
+    justify-content: flex-start;
+    padding: var(--spacing-sm) 0;
+}
+
+.nav-bar.unpinned.hover-show .similarweb-logo.full-logo {
+    display: block;
+}
+
+.nav-bar.unpinned.hover-show .similarweb-logo.icon-only {
+    display: none;
+}
+
+.nav-bar.unpinned.hover-show .nav-text,
+.nav-bar.unpinned.hover-show .new-badge,
+.nav-bar.unpinned.hover-show .beta-badge,
+.nav-bar.unpinned.hover-show .chevron-icon {
+    display: block;
+}
+
+.nav-bar.unpinned.hover-show .nav-item {
+    width: auto;
+    padding: var(--spacing-md);
+    justify-content: space-between;
+}
+
+.nav-bar.unpinned.hover-show .nav-content {
+    justify-content: flex-start;
+}
+
+/* Logo Section */
+.nav-logos {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.header-nav-bar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    padding: 0;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+}
+
+.similarweb-logo {
+    width: 224px;
+    height: 32px;
+}
+
+.similarweb-logo.full-logo {
+    display: block;
+}
+
+.similarweb-logo.icon-only {
+    display: none;
+    position: relative;
+    width: 32px;
+    height: 30px;
+}
+
+.similarweb-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icon-only .main-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.icon-only .main-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.icon-only .badge-icon {
+    position: absolute;
+    right: -3px;
+    bottom: -3px;
+    width: 11px;
+    height: 11px;
+}
+
+.icon-only .badge-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Navigation Menu */
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex: 1;
+    gap: var(--spacing-xl);
+}
+
+.nav-upper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.nav-item:hover {
+    background-color: var(--background-gray);
+}
+
+.nav-item.active {
+    background-color: rgba(25, 90, 254, 0.05);
+}
+
+.nav-content {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.nav-icon {
+    width: 12px;
+    height: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.nav-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nav-icon.home-icon img {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(35%) saturate(2234%) hue-rotate(198deg) brightness(95%) contrast(102%);
+}
+
+.nav-text {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--dark-navy);
+    line-height: 1.43;
+}
+
+.nav-item.active .nav-text {
+    color: var(--primary-blue);
+}
+
+/* Active nav icon styling handled by SVG color directly */
+
+/* Badges */
+.new-badge {
+    background-color: #e6faf5;
+    color: #009688;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px var(--spacing-sm);
+    border-radius: 26px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.beta-badge {
+    background-color: rgba(255, 122, 26, 0.15);
+    color: #ff7a1a;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px var(--spacing-sm);
+    border-radius: 26px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.chevron-icon {
+    width: 14px;
+    height: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chevron-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Pin Button */
+.nav-bottom {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+    align-items: flex-end;
+}
+
+.pin-button {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-medium);
+    border-radius: var(--radius-full);
+}
+
+.pin-button:hover {
+    background-color: rgba(25, 90, 254, 0.1);
+}
+
+.pin-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform var(--transition-medium);
+}
+
+.pin-button.unpinned img {
+    transform: rotate(45deg);
+    opacity: 0.6;
+}
+
+.pin-button.unpinned:hover img {
+    opacity: 1;
+} 

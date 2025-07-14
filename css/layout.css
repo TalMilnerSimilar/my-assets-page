@@ -1,0 +1,365 @@
+/* App Layout Structure */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+}
+
+/* Main Content Area */
+.main-content {
+    flex: 1;
+    background-color: var(--white);
+    overflow-y: auto;
+    transition: margin-left var(--transition-medium);
+    display: flex;
+    flex-direction: column;
+}
+
+.main-content.navbar-unpinned {
+    margin-left: 0;
+}
+
+/* Adjust max-width when navbar is unpinned */
+.main-content.navbar-unpinned .main-layout-grid {
+    max-width: calc(100vw - 96px); /* Remove sidebar width from calculation */
+}
+
+.main-content.navbar-unpinned .bottom-cards {
+    max-width: calc(100vw - 96px); /* Remove sidebar width from calculation */
+}
+
+.main-content.navbar-unpinned .custom-categories {
+    max-width: calc(100vw - 96px); /* Remove sidebar width from calculation */
+}
+
+.main-content-wrapper {
+    padding: 0 24px 24px 24px; /* Reduced bottom padding to 24px */
+    /* Removed min-height: 100vh to prevent scrolling issues */
+}
+
+/* Main Layout Grid - Hero + Keywords (3/5) and Product Trackers (2/5, spans both rows) */
+.main-layout-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr; /* 3/5 (60%) and 2/5 (40%) exact proportions */
+    grid-template-rows: 120px 1fr; /* Hero 120px, Keywords takes remaining space */
+    grid-template-areas: 
+        "hero trackers"
+        "keywords trackers";
+    column-gap: var(--spacing-lg); /* 16px horizontal gap between columns */ 
+    row-gap: var(--spacing-lg); /* 16px vertical gap between hero and keywords */
+    margin-top: var(--spacing-2xl);
+    margin-left: 48px;
+    margin-right: 48px;
+    align-items: stretch; /* Ensure items stretch to fill their grid areas */
+    min-height: 520px; /* Ensure grid has minimum height */
+    max-width: calc(100vw - 256px - 96px); /* Account for sidebar and margins */
+}
+
+/* Explicit grid positioning using named areas */
+.product-trackers {
+    grid-area: trackers; /* Spans both rows on the right */
+    height: 520px; /* Fixed height as requested */
+    min-height: 520px; /* Prevent shrinking */
+    max-height: 520px; /* Prevent growing */
+}
+
+.keyword-lists {
+    grid-area: keywords; /* Bottom left area */
+    height: 384px; /* Fixed height: 520px - 120px - 16px gap = 384px */
+    min-height: 384px; /* Prevent shrinking */
+    max-height: 384px; /* Prevent growing */
+}
+
+/* Legacy content-grid for any remaining usage */
+.content-grid {
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    gap: var(--spacing-xl);
+}
+
+/* Hero Section */
+.hero-section {
+    grid-area: hero; /* Top left area */
+    background: linear-gradient(80.91deg, rgba(255, 255, 255, 0.1) 48%, rgba(25, 90, 254, 0.1) 74%, rgba(165, 31, 227, 0.1) 91%);
+    border: 1px solid var(--light-gray);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-xl);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 120px;
+    min-height: 120px; /* Prevent shrinking */
+    max-height: 120px; /* Prevent growing */
+}
+
+.hero-content h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--dark-navy);
+    line-height: 1.4;
+    margin-bottom: var(--spacing-sm);
+}
+
+.hero-content p {
+    font-size: 16px;
+    color: var(--dark-navy);
+    line-height: 1.375;
+}
+
+.create-button {
+    background-color: var(--primary-blue);
+    color: var(--white);
+    font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+    display: inline-block;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.create-button:hover {
+    background-color: var(--primary-blue-hover);
+}
+
+.create-button:focus {
+    outline: none;
+}
+
+.create-button:focus-visible {
+    outline: 2px solid var(--primary-blue-hover);
+    outline-offset: 2px;
+}
+
+.create-button:active {
+    background-color: var(--primary-blue-hover);
+    transform: none;
+}
+
+/* Bottom Cards Section - 3 Column Layout (Figma Design) */
+.bottom-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-lg);
+    margin-bottom: 16px; /* 16px bottom margin */
+    margin-left: 48px;
+    margin-right: 48px;
+    width: auto;
+    max-width: calc(100vw - 256px - 96px); /* Account for sidebar and margins */
+}
+
+.bottom-cards .card {
+    height: 400px; /* Fixed height for all bottom cards */
+    min-height: 400px; /* Prevent shrinking */
+    max-height: 400px; /* Prevent growing */
+}
+
+/* Custom Categories Section - Full Width Card */
+.custom-categories {
+    height: 500px; /* Fixed height for custom categories */
+    min-height: 500px; /* Prevent shrinking */
+    max-height: 500px; /* Prevent growing */
+    margin-left: 48px;
+    margin-right: 48px;
+    margin-top: var(--spacing-lg); /* Add gap above custom categories */
+    max-width: calc(100vw - 256px - 96px); /* Account for sidebar and margins */
+}
+
+/* Responsive Design */
+@media (max-width: 1400px) {
+    .main-layout-grid {
+        margin-left: 24px;
+        margin-right: 24px;
+        max-width: calc(100vw - 256px - 48px);
+    }
+    
+    .bottom-cards,
+    .custom-categories {
+        margin-left: 24px;
+        margin-right: 24px;
+        max-width: calc(100vw - 256px - 48px);
+    }
+    
+    /* Adjust for unpinned navbar at this breakpoint */
+    .main-content.navbar-unpinned .main-layout-grid {
+        max-width: calc(100vw - 48px);
+    }
+    
+    .main-content.navbar-unpinned .bottom-cards,
+    .main-content.navbar-unpinned .custom-categories {
+        max-width: calc(100vw - 48px);
+    }
+    
+    .bottom-cards {
+        margin-bottom: 16px; /* Direct pixel value */
+    }
+    
+    .custom-categories {
+        margin-top: var(--spacing-lg); /* Maintain top margin */
+    }
+}
+
+@media (max-width: 1200px) {
+    .main-layout-grid {
+        grid-template-columns: 1fr; /* Single column layout */
+        grid-template-rows: auto auto auto; /* Hero, Keywords, Trackers stacked */
+        grid-template-areas: 
+            "hero"
+            "keywords" 
+            "trackers";
+    }
+    
+    .product-trackers {
+        grid-area: trackers; /* Remove row spanning on smaller screens */
+        height: auto; /* Remove fixed height on smaller screens */
+    }
+    
+    .keyword-lists {
+        height: auto; /* Remove fixed height on smaller screens */
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-lg);
+    }
+    
+    .bottom-cards {
+        grid-template-columns: 1fr 1fr; /* 2 columns on medium screens */
+        margin-bottom: 16px; /* Direct pixel value */
+    }
+}
+
+@media (max-width: 900px) {
+    .bottom-cards {
+        grid-template-columns: 1fr; /* Single column on small screens */
+        margin-bottom: 16px; /* Direct pixel value */
+    }
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+    
+    .nav-bar {
+        width: 100%;
+        height: auto;
+    }
+    
+    .main-content {
+        margin-left: 0;
+    }
+    
+    .hero-section {
+        flex-direction: column;
+        height: auto;
+        gap: var(--spacing-lg);
+    }
+    
+    .bottom-cards {
+        grid-template-columns: 1fr;
+        margin-bottom: 16px; /* Keep 16px margin */
+    }
+    
+    .custom-categories {
+        margin-top: var(--spacing-xl); /* Maintain top margin on mobile */
+    }
+    
+    .main-content-wrapper {
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
+        padding-bottom: 24px; /* Reduced to 24px for consistency */
+    }
+    
+    .shi-header {
+        padding: var(--spacing-lg) var(--spacing-lg);
+    }
+} 
+
+/* Create Asset Dropdown - Figma Design */
+.create-asset-dropdown {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #cbd1d7;
+    border-radius: 3px;
+    box-shadow: 0px 3px 5px 0px rgba(42, 62, 82, 0.12);
+    z-index: 1000;
+    min-width: 240px;
+    margin-top: 8px;
+    overflow: hidden;
+    animation: dropdown-fade-in 0.15s ease-out;
+}
+
+@keyframes dropdown-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.create-asset-dropdown .dropdown-list-item {
+    height: 44px;
+    background: #ffffff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    position: relative;
+    transition: background-color 0.15s ease;
+}
+
+.create-asset-dropdown .dropdown-list-item:hover {
+    background: #f8f9fa;
+}
+
+.create-asset-dropdown .dropdown-list-item.selected {
+    background: #f3f7ff;
+}
+
+.create-asset-dropdown .dropdown-item-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+
+.create-asset-dropdown .dropdown-item-text {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: #092540;
+    margin: 0;
+}
+
+.create-asset-dropdown .dropdown-item-icon {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.create-asset-dropdown .dropdown-item-icon img {
+    width: 16px;
+    height: 16px;
+    object-fit: contain;
+} 
